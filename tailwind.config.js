@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/input.{html,js}'],
