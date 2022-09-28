@@ -1,15 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Awesome Books</title>
     <link rel="stylesheet" href="style.css">
-    <script defer src="code.js"></script>
+    <script defer src="code.js" type="module"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <script defer src="https://cdn.tailwindcss.com"></script>
+    <script defer src="tailwind.config.js"></script>
 </head>
+
 <body>
-    
-    
+    <header id="header" class="fixed w-screen z-50">
+        <div class="flex items-center justify-between px-4 py-8 border-b-2 w-full h-20 bg-white/80">
+            <div>
+                <a href="./index.html" id="logo" class="text-[2rem]">Awesome Books</a>
+            </div>
+            <nav
+                class="hidden transition ease-in-out duration-300 lg:flex items-center flex-row w-[40%] justify-center ">
+                <ul class="flex items-center justify-between gap-8 text-[1.5rem] cursor-pointer">
+                    <li id="book-list">Book List</li>
+                    <li id="book-add">Add</li>
+                    <li id="contact-us">Contact Us</li>
+                </ul>
+            </nav>
+            <div id="hamburger" class="lg:hidden cursor-pointer">
+                <i class="fa-solid fa-bars text-[2rem]"></i>
+            </div>
+        </div>
+
+    </header>
+
+    <header id="mobile-menu"
+        class="fixed overflow-hidden w-0 top-0 left-0 z-50 lg:hidden transition-all ease-in-out duration-300">
+        <div class="flex items-center justify-between px-4 py-2 border-b-2 w-full h-20 bg-white/80">
+            <nav class="flex items-center flex-row w-full justify-center ">
+                <ul id="nav-links" class="flex items-center justify-between gap-8 text-[1.5rem] cursor-pointer">
+                    <li id="book-list-mobile">Book List</li>
+                    <li id="book-add-mobile">Add</li>
+                    <li id="contact-us-mobile">Contact Us</li>
+                </ul>
+            </nav>
+            <div id="close-btn" class="lg:hidden cursor-pointer">
+                <i class="fa-solid fa-times text-[2rem]"></i>
+            </div>
+        </div>
+
+    </header>
+
+
+    <div class="flex mt-20 px-4">
+        <p id="current-date" class="text-[1.5rem]"></p>
+    </div>
+
+    <div class="flex items-center justify-center mt-40">
+        <h1 class="text-[3rem]">
+            <i class="fa-solid fa-book-open"></i>
+            Awesome Books
+        </h1>
+    </div>
+
+    <section id="book-list-section" class="hidden flex flex-col px-8 py-8 border-2">
+        <div id="book-store">
+
+        </div>
+    </section>
+
+    <form id="input-section" class="hidden text-center px-8 py-8">
+        <div class="flex gap-4 items-center justify-center">
+            <label for="title" class="text-[1.5rem]">Book</label>
+            <input type="text" id="title-book" placeholder="book name" class="text-[1.5rem] border-2 w-[50%] h-10" required>
+            <br />
+        </div>
+        <div class="flex gap-4 items-center justify-center my-8">
+            <label for="author" class="text-[1.5rem]">Author</label>
+            <input type="text" id="author-book" placeholder="author" class="text-[1.5rem] border-2 w-[50%] h-10" required>
+            <br />
+        </div>
+        <button type="submit" id="add"
+            class=" text-white text-[1.4rem] p-4 bg-zinc-900 tracking-wider rounded-md hover:bg-white hover:text-zinc-900 border-2 hover:rounded-lg transition ease-in-out duration-300">Add
+            Book</button>
+    </form>
+
+    <section id="contacts" class="hidden text-center transition-all duration-300 px-8 py-8">
+        <h2 class="text-[2.5rem]">Contact Information</h2>
+        <p class="text-[1.5rem]">
+            Do you have any questions or you just want to say "Hello"? <br />
+            You can reach out to us!
+        </p>
+        <ul class="flex flex-col items-center justify-center text-[1.5rem] mt-2">
+            <li>Our e-mail: mail@mail.com</li>
+            <li>Our phone number: 001234567</li>
+            <li>Our address: 22 Jump Street, 1101 City, Country</li>
+        </ul>
+    </section>
+
+    <footer class="mt-[90vh] mx-2 text-[1.2rem]">
+        <p>All Rights are reserved</p>
+    </footer>
+
 </body>
+
 </html>
