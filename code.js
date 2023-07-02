@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 import addtoLocalStorage from './modules/localStorage.js';
 import time from './modules/timeAndDate.js';
 
