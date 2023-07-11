@@ -16,7 +16,7 @@ export default class Book {
      const bookCard = document.createElement('li');
      bookCard.id = book.id;
      bookCard.classList.add('book');
-     bookCard.innerHTML = `<p class='font-bold'>Name:<p>${book.bookName}</p></p><p class='font-bold'>Author:<p>${book.bookAuthor}</p></p><i class="fa-solid fa-trash delete-btn"></i>`;
+     bookCard.innerHTML = `<div><i class="fa-sharp fa-solid fa-book"></i><p class='font-bold'>${book.bookName}</p><p>${book.bookAuthor}</p></div><i class="fa-solid fa-trash delete-btn"></i>`;
      bookList.appendChild(bookCard);
 
      const deleteBtn = document.querySelectorAll('.delete-btn');

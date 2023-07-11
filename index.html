@@ -64,24 +64,20 @@
     </div>
 
     <section id="book-list-section" class="hidden flex flex-col px-8 py-8 text-[1.5rem]">
-        <ul class="book-store flex flex-col gap-8">
+        <ul class="book-store flex flex-col gap-8 p-[4rem]">
 
         </ul>
     </section>
 
     <form id="input-section" class="hidden text-center px-8 py-8">
-        <div class="flex gap-4 items-center justify-center">
-            <label for="title" class="text-[1.5rem]">Book</label>
-            <input type="text" id="title-book" placeholder="book name" class="text-[1.5rem] border-2 w-[50%] h-10" required>
+        <div class="flex flex-col gap-2 items-center justify-center">
+            <input type="text" id="title-book" placeholder="book name" class="text-[1.5rem] bg-zinc-100 border-2 w-[50%] h-10 p-8 rounded-md">
+            <br />
+            <input type="text" id="author-book" placeholder="author" class="text-[1.5rem] bg-zinc-100 border-2 w-[50%] h-10 p-8 rounded-md">
             <br />
         </div>
-        <div class="flex gap-4 items-center justify-center my-8">
-            <label for="author" class="text-[1.5rem]">Author</label>
-            <input type="text" id="author-book" placeholder="author" class="text-[1.5rem] border-2 w-[50%] h-10" required>
-            <br />
-        </div>
-        <button type="submit" id="add"
-            class=" text-white text-[1.4rem] p-4 bg-zinc-900 tracking-wider rounded-md hover:bg-white hover:text-zinc-900 border-2 hover:rounded-lg transition ease-in-out duration-300">Add
+        <button type="button" id="add"
+            class=" text-white text-[1.4rem] p-4 bg-zinc-900 tracking-wider rounded-lg hover:bg-white hover:text-zinc-900 border-2 hover:rounded-lg transition ease-in-out duration-300">Add
             Book</button>
     </form>
 
