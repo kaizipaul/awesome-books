@@ -1,5 +1,5 @@
-import addtoLocalStorage from './modules/localStorage.js';
 import time from './modules/timeAndDate.js';
+import Book, { nameInput, authorInput, bookList } from './modules/bookClass.js';
 
 // calling variables
 const navBar = document.querySelector('#header');
@@ -7,10 +7,7 @@ const navBar = document.querySelector('#header');
 const bookListNav = document.querySelector('#book-list');
 const bookListMobile = document.querySelector('#book-list-mobile');
 
-const bookName = document.querySelector('#title-book');
-const bookAuthor = document.querySelector('#author-book');
 const submitBook = document.querySelector('#add');
-const booksDiv = document.querySelector('#book-store');
 
 const addBook = document.querySelector('#book-add');
 const addBookMobile = document.querySelector('#book-add-mobile');
@@ -24,6 +21,11 @@ const bookListSection = document.querySelector('#book-list-section');
 const hamburger = document.querySelector('#hamburger');
 const mobileMenu = document.querySelector('#mobile-menu');
 const closeBtn = document.querySelector('#close-btn');
+
+// render the book list when the page is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+  Book.render();
+});
 
 bookListNav.addEventListener('click', () => {
   bookListSection.style.display = 'block';
@@ -74,80 +76,14 @@ closeBtn.addEventListener('click', () => {
   navBar.style.display = 'block';
 });
 
-let bookArray = [];
+// add book to list
 
-const addElementsToPage = ((bookArray) => {
-  booksDiv.innerHTML = '';
-
-  bookArray.foreach((task) => {
-    const writtenBy = ' by : ';
-    const div = document.createElement('div');
-    div.className = 'task mb-3';
-
-    div.setAttribute('data-id', task.id);
-    div.appendChild(
-      document.createTextNode(task.title + writtenBy + task.author),
-    );
-
-    const delBtn = document.createElement('button');
-    delBtn.className = 'del text-[1.4rem] p-4 rounded-md';
-    delBtn.appendChild(document.createTextNode('Delete'));
-
-    div.appendChild(delBtn);
-
-    booksDiv.appendChild(div);
-  });
+submitBook.addEventListener('click', () => {
+  Book.new();
+  nameInput.value = '';
+  authorInput.value = '';
+  bookList.innerHTML = '';
+  Book.render();
 });
 
-class AddBooks {
-  static addToArray(bookName, authorName) {
-    const task = {
-      id: Date.now(),
-      title: bookName,
-      author: authorName,
-    };
-
-    bookArray.push(task);
-
-    addElementsToPage(bookArray);
-    addtoLocalStorage(bookArray);
-  }
-
-    static deleteTask = (taskId) => {
-      bookArray = bookArray.filter((task) => (task.id !== taskId));
-      addtoLocalStorage(bookArray);
-    };
-}
-
-submitBook.addEventListener('click', (e) => {
-  e.preventDefault();
-  if ((bookName.value && bookAuthor.value) !== '') {
-    AddBooks.addToArray(bookName.value, bookAuthor.value);
-    bookName.value = '';
-    bookAuthor.value = '';
-    bookName.focus();
-  }
-});
-
-booksDiv.addEventListener('click', (e) => {
-  if (e.target.classList.contains('del')) {
-    e.target.parentElement.remove();
-
-    AddBooks.deleteTask(JSON.parse(e.target.parentElement.getAttribute('data-id')));
-  }
-});
-
-const getFromStorage = () => {
-  const data = window.localStorage.getItem('books');
-  if (data) {
-    const books = JSON.parse(data);
-    addElementsToPage(books);
-  }
-};
-
-if (localStorage.getItem('books')) {
-  bookArray = JSON.parse(localStorage.getItem('books'));
-}
-
-getFromStorage();
 time();

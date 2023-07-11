@@ -7,13 +7,13 @@ body {
   margin: 0 !important;
   padding: 0 !important;
   overflow-x: hidden;
-  width: 100vw;
+  width: 100%;
   font-size: 70%;
   font-family: 'Roboto Mono', monospace;
   scroll-behavior: smooth;
 }
 
-.task {
+.book {
   display: flex;
-  justify-content: space-around;
+  gap: 0.5rem;
 }

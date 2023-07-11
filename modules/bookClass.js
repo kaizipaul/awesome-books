@@ -1,0 +1,47 @@
+export const bookStorage = JSON.parse(localStorage.getItem('books')) || [];
+export const nameInput = document.querySelector('#title-book');
+export const authorInput = document.querySelector('#author-book');
+export const bookList = document.querySelector('.book-store');
+
+// initiate book class
+export default class Book {
+  constructor(id, bookName, bookAuthor) {
+    this.id = id;
+    this.bookName = bookName;
+    this.bookAuthor = bookAuthor;
+  }
+
+ static render = () => {
+   bookStorage.forEach((book) => {
+     const bookCard = document.createElement('li');
+     bookCard.id = book.id;
+     bookCard.classList.add('book');
+     bookCard.innerHTML = `<p class='font-bold'>Name:<p>${book.bookName}</p></p><p class='font-bold'>Author:<p>${book.bookAuthor}</p></p><i class="fa-solid fa-trash delete-btn"></i>`;
+     bookList.appendChild(bookCard);
+
+     const deleteBtn = document.querySelectorAll('.delete-btn');
+
+     deleteBtn.forEach((del, id) => {
+       del.addEventListener('click', () => {
+         Book.delete(id);
+       });
+     });
+   });
+ }
+
+ static new = () => {
+   const newBook = new Book(Date.now(), nameInput.value, authorInput.value);
+
+   if (nameInput.value && authorInput.value !== '') {
+     bookStorage.push(newBook);
+     localStorage.setItem('books', JSON.stringify(bookStorage));
+   }
+ }
+
+ static delete = (index) => {
+   if (index !== -1) bookStorage.splice(index, 1);
+   localStorage.setItem('books', JSON.stringify(bookStorage));
+   bookList.innerHTML = '';
+   Book.render();
+ }
+}
