@@ -86,4 +86,6 @@ submitBook.addEventListener('click', () => {
   Book.render();
 });
 
+// add functionality that allows the user to submit the book by pressing enter
+
 time();

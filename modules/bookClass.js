@@ -36,6 +36,8 @@ export default class Book {
      bookStorage.push(newBook);
      localStorage.setItem('books', JSON.stringify(bookStorage));
    }
+
+   // add message to user if the input fields are false
  }
 
  static delete = (index) => {
